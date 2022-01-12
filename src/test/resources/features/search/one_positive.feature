@@ -9,9 +9,9 @@ Then results are returned successful
   |apple_endpoint|
   |"apple"|
 
-#Scenario Outline: Positive - Apples response exists
-#When GET request ist sent to <apple_endpoint>
-#Then results are displayed for <product>
-#  Examples:
-#    |apple_endpoint| product|
-#    |"apple"| "apple"|
+Scenario Outline: Positive - Has at least one Apple Product
+When GET request ist sent to <apple_endpoint>
+Then results has at Least One Element of AppleProduct type
+  Examples:
+    |apple_endpoint| product|
+    |"apple"| ""|
