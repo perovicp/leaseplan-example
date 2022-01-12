@@ -65,7 +65,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.0.13</version>
+            <version>1.2.10</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -90,18 +90,18 @@
         </dependency>
     </dependencies>
 
-    <distributionManagement>
-        <repository>
-            <id>central</id>
-            <name>a0jfsyiy82n4q-artifactory-primary-0-releases</name>
-            <url>${env.MAVEN_REPO_URL}/default-maven-local</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>a0jfsyiy82n4q-artifactory-primary-0-snapshots</name>
-            <url>${env.MAVEN_REPO_URL}/default-maven-local</url>
-        </snapshotRepository>
-    </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>central</id>-->
+<!--            <name>a0jfsyiy82n4q-artifactory-primary-0-releases</name>-->
+<!--            <url>${env.MAVEN_REPO_URL}/default-maven-local</url>-->
+<!--        </repository>-->
+<!--        <snapshotRepository>-->
+<!--            <id>snapshots</id>-->
+<!--            <name>a0jfsyiy82n4q-artifactory-primary-0-snapshots</name>-->
+<!--            <url>${env.MAVEN_REPO_URL}/default-maven-local</url>-->
+<!--        </snapshotRepository>-->
+<!--    </distributionManagement>-->
 
     <build>
         <plugins>
