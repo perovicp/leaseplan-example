@@ -70,7 +70,7 @@ public class SearchStepDefinitions {
         assertThat(rb.jsonPath().getList(".", Product.class)).hasAtLeastOneElementOfType(Product.class);
         List<Product> products = rb.jsonPath().getList(".", Product.class);
         // Any of Elements hast in the title product word
-        assertThat(products.stream().anyMatch(p -> p.getTitle().contains(product.toLowerCase()))).isFalse();
+        assertThat(products.stream().anyMatch(p -> p.getTitle().startsWith(product.toLowerCase()))).isFalse();
     }
 
 }
