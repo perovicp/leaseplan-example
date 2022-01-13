@@ -7,10 +7,10 @@ Serenity BDD is a library that makes it easier to write high quality automated a
 This project has been done as SerenityRest demo for Project application
 
 ## Cucumber Run configuration for Cucumber Java
-'''java
+```sh
 Mainclass: net.serenitybdd.cucumber.cli.Main
 Glue: net.serenitybdd.cucumber.actors starter.stepdefinitions
-'''
+```
 
 ### The project directory structure
 
