@@ -1,13 +1,12 @@
-# Getting started with Serenity and Cucumber and Gitlab
+# Leasing Demo Project - Products API test
 
-Serenity BDD is a library that makes it easier to write high quality automated acceptance tests, with powerful reporting and living documentation features. It has strong support for both web testing with Selenium, and API testing using RestAssured.
+Serenity BDD is a library that makes it easier to write high quality automated acceptance tests, with powerful reporting and living documentation features. It has strong support API testing using RestAssured.
 
-Serenity strongly encourages good test automation design, and supports several design patterns, including classic Page Objects, the newer Lean Page Objects/ Action Classes approach, and the more sophisticated and flexible Screenplay pattern.
+Serenity strongly encourages good test automation design, and supports several design patterns.
 
-The latest version of Serenity supports Cucumber 5.5.
-
+![example workflow](https://github.com/perovicp/leaseplan-example/actions/workflows/maven.yml/badge.svg)
 ## The leasing demo project
-The best place to start with Serenity and Cucumber is to clone or download the starter project on Github ([https://github.com/serenity-bdd/serenity-cucumber-starter](https://github.com/serenity-bdd/serenity-cucumber-starter)). This project gives you a basic project setup, along with some sample tests and supporting classes. There are two versions to choose from. The master branch uses a more classic approach, using action classes and lightweight page objects, whereas the **[screenplay](https://github.com/serenity-bdd/serenity-cucumber-starter/tree/screenplay)** branch shows the same sample test implemented using Screenplay.
+This project has been done as SerenityRest demo for Project application
 
 ### The project directory structure
 The project has build scripts for both Maven and Gradle, and follows the standard directory structure used in most Serenity projects:
@@ -55,35 +54,25 @@ The sample code in the master branch uses the Screenplay pattern. The Screenplay
 ```
 
 
-The Screenplay DSL is rich and flexible, and well suited to teams working on large test automation projects with many team members, and who are reasonably comfortable with Java and design patterns. 
+The Screenplay DSL is rich and flexible, and well suited to teams working on large test automation projects with many team members, and who are reasonably comfortable with Java and design patterns.
 
 ### The Action Classes implementation.
 
 A more imperative-style implementation using the Action Classes pattern can be found in the `action-classes` branch. The glue code in this version looks this this:
 
 ```java
-    @Given("^(?:.*) is researching things on the internet")
-    public void i_am_on_the_Wikipedia_home_page() {
-        navigateTo.theHomePage();
-    }
-
-    @When("she/he looks up {string}")
-    public void i_search_for(String term) {
-        searchFor.term(term);
-    }
-
-    @Then("she/he should see information about {string}")
-    public void all_the_result_titles_should_contain_the_word(String term) {
-        assertThat(searchResult.displayed()).contains(term);
+    @When("GET request ist sent to {string}")
+    public void getRequestIsSent(String endpoint) {
+        SerenityRest.given().get(HOME + endpoint);
     }
 ```
 
 ## Executing the tests
 To run the sample project, you can either just run the `CucumberTestSuite` test runner class, or run either `mvn verify` or `gradle test` from the command line.
 
-By default, the tests will run using Chrome. You can run them in Firefox by overriding the `driver` system property, e.g.
+By default, maven clean verify will execute all the API Integration tests
 ```json
-$ mvn clean verify -Ddriver=firefox
+$ mvn clean verify
 ```
 The test results will be recorded in the `target/site/serenity/index.html`.
 
