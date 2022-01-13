@@ -37,10 +37,10 @@ Then results have at Least One Element of <product> Product type
       |mango_endpoint| product|
       |"mango"| Apple|
 
-  Scenario Outline: Negative - False Endpoint response should fail
+  Scenario Outline: Negative - Asking for a Cars on Car Endpoint response should fail
     When GET request ist sent to <apple_endpoint>
     Then results are returned as not successful
     And results are in JSON format
     Examples:
       |apple_endpoint|
-      |"not_valid_endpoint"|
+      |"car"|
