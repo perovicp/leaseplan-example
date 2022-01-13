@@ -2,13 +2,9 @@ package starter;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import javax.measure.Unit;
-import javax.measure.quantity.Volume;
-import java.math.BigDecimal;
-import java.net.URL;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AppleProduct {
+public class Product {
     @JsonProperty("provider")
     public String provider;
     @JsonProperty("title")
@@ -16,7 +12,7 @@ public class AppleProduct {
     @JsonProperty("url")
     public String url;
     @JsonProperty("brand")
-    public String brand ;
+    public String brand;
     @JsonProperty("price")
     public String price;
     @JsonProperty("unit")

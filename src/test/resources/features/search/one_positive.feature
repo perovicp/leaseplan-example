@@ -9,9 +9,16 @@ Then results are returned successful
   |apple_endpoint|
   |"apple"|
 
-Scenario Outline: Positive - Has at least one Apple Product
+Scenario Outline: Positive - Apple product response has at least one Apple Product
 When GET request ist sent to <apple_endpoint>
-Then results has at Least One Element of AppleProduct type
+Then results have at Least One Element of <product> Product type
   Examples:
     |apple_endpoint| product|
-    |"apple"| ""|
+    |"apple"| Apple|
+
+  Scenario Outline: Negative - Apple product response doesn't have Mango Product
+    When GET request ist sent to <apple_endpoint>
+    Then results haven't Element of <product> Product type
+    Examples:
+      |apple_endpoint| product|
+      |"apple"| Mango|

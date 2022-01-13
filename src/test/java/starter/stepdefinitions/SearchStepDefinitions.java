@@ -7,20 +7,14 @@ import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
-import io.restassured.mapper.ObjectMapper;
-import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.ResponseBody;
 import net.serenitybdd.rest.SerenityRest;
 import org.apache.http.HttpStatus;
-import org.assertj.core.api.ArraySortedAssert;
-import org.slf4j.Logger;
-import starter.AppleProduct;
+import starter.Product;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
-import static net.serenitybdd.rest.RestDefaults.config;
 import static net.serenitybdd.rest.SerenityRest.*;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.hamcrest.Matchers.contains;
@@ -55,22 +49,28 @@ public class SearchStepDefinitions {
         assertThat(SerenityRest.lastResponse().contentType()).isEqualTo(ContentType.JSON.toString());
     }
 
-    @Then("results has at Least One Element of AppleProduct type")
-    public void assertResultsDisplayedForProduct() {
+    @Then("results have at Least One Element of {word} Product type")
+    public void assertResultsDisplayedForProduct(String product) {
         ResponseBody<?> rb = SerenityRest.lastResponse().getBody();
-        //info
-        assertThat(rb.jsonPath().getList(".",AppleProduct.class)).hasAtLeastOneElementOfType(AppleProduct.class);
-        List<AppleProduct> appleProducts = rb.jsonPath().getList(".",AppleProduct.class);
-        System.out.println("Product list number: " + appleProducts.stream().count());
+        //Any of elements are  product type
+        assertThat(rb.jsonPath().getList(".", Product.class)).hasAtLeastOneElementOfType(Product.class);
+        List<Product> products = rb.jsonPath().getList(".", Product.class);
+        // Any of Elements hast in the title product word
+        assertThat(products.stream().anyMatch(p -> p.getTitle().contains(product.toLowerCase()))).isTrue();
+    }
+
+    @Then("results haven't Element of {word} Product type")
+    public void assertResultsDoesntHaveProduct(String product) {
+        ResponseBody<?> rb = SerenityRest.lastResponse().getBody();
+        //Any of elements are Apple product type
+        assertThat(rb.jsonPath().getList(".", Product.class)).hasAtLeastOneElementOfType(Product.class);
+        List<Product> products = rb.jsonPath().getList(".", Product.class);
+        // Any of Elements hast in the title product word
+        assertThat(products.stream().anyMatch(p -> p.getTitle().contains(product.toLowerCase()))).isFalse();
     }
 
     @Then("doesn"+"'"+"t see the results")
     public void assertResultsAreNotVisible() {
         restAssuredThat(response -> response.body("error", contains("True")));
-    }
-
-    @Then("printout last response body")
-    public void printLastResponse(){
-        lastResponse().prettyPrint();
     }
 }
