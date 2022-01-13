@@ -10,10 +10,9 @@ import io.restassured.http.ContentType;
 import io.restassured.response.ResponseBody;
 import net.serenitybdd.rest.SerenityRest;
 import org.apache.http.HttpStatus;
-import starter.Product;
+import starter.stepdefinitions.dto.Product;
 
 import java.util.List;
-import java.util.Locale;
 
 import static net.serenitybdd.rest.SerenityRest.*;
 import static org.assertj.core.api.Java6Assertions.assertThat;
