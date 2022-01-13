@@ -43,6 +43,11 @@ public class SearchStepDefinitions {
         assertThat(lastResponse().getStatusCode()).isEqualTo( HttpStatus.SC_OK);
     }
 
+    @Then("results are returned as not successful")
+    public void assertResponseFailed() {
+        assertThat(lastResponse().getStatusCode()).isGreaterThan( HttpStatus.SC_NO_CONTENT);
+    }
+
     @Then("results are in JSON format")
     public void assertJSONFileFormat(){
         assertThat(SerenityRest.lastResponse().contentType()).isEqualTo(ContentType.JSON.toString());
@@ -68,8 +73,4 @@ public class SearchStepDefinitions {
         assertThat(products.stream().anyMatch(p -> p.getTitle().contains(product.toLowerCase()))).isFalse();
     }
 
-    @Then("doesn"+"'"+"t see the results")
-    public void assertResultsAreNotVisible() {
-        restAssuredThat(response -> response.body("error", contains("True")));
-    }
 }
