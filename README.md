@@ -61,7 +61,6 @@ Since the Serenity reports contain aggregate information about all of the tests,
 ## Cucumber Run configuration for Cucumber Java
 Mainclass: net.serenitybdd.cucumber.cli.Main
 Glue: net.serenitybdd.cucumber.actors starter.stepdefinitions
-Program Arguments:  --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter
 
 They reports are also integrated into the Maven build process: the following code in the `pom.xml` file causes the reports to be generated automatically once all the tests have completed when you run `mvn verify`?
 
