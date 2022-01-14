@@ -12,6 +12,8 @@ This project has been done as SerenityRest demo for Project application
 Mainclass: net.serenitybdd.cucumber.cli.Main
 Glue: net.serenitybdd.cucumber.actors starter.stepdefinitions
 ```
+## Serenity report can be seen after Run
+http://perovicp.gitlab.io/leaseplan-example/
 
 ### The project directory structure
 
