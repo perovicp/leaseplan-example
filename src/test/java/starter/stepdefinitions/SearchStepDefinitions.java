@@ -11,12 +11,9 @@ import io.restassured.response.ResponseBody;
 import net.serenitybdd.rest.SerenityRest;
 import org.apache.http.HttpStatus;
 import starter.stepdefinitions.dto.Product;
-
 import java.util.List;
-
 import static net.serenitybdd.rest.SerenityRest.*;
 import static org.assertj.core.api.Java6Assertions.assertThat;
-import static org.hamcrest.Matchers.contains;
 import static starter.stepdefinitions.Constants.*;
 
 public class SearchStepDefinitions {

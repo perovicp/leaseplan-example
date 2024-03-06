@@ -16,7 +16,7 @@ Then results have at Least One Element of <product> Product type
   Examples:
     |apple_endpoint| product|
     |"apple"| Apple|
-  @Inte
+  @Integration
   Scenario Outline: Negative - Apple product response doesn't have Mango Product
     When GET request ist sent to <apple_endpoint>
     Then results haven't Element of <product> Product type
